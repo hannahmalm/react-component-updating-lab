@@ -2,6 +2,9 @@ import React, { PureComponent } from 'react';
 
 class Controls extends PureComponent {
 
+
+  //the App component gives us access to the upadteIntervalSetting, updateInterval, and handleAddTimer
+  //App passes these down 
   render() {
     return (
       <div>

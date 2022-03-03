@@ -11,7 +11,28 @@ class Timer extends Component {
   }
 
   //Your code here
+  //This is from the code along. When the component updates, update the color to a rand
+  componentDidUpdate() {
+    this.timer.current.style.color =
+  "#" + Math.floor(Math.random() * 16777215).toString(16);
+  }
 
+  //Most of the time, we want to let React handle its updating
+  //The shouldComponentUpdate method fires just before a component commits to updating
+  //
+  //As mentioned in the previous section, every time App's state changes, it causes its Timer children to update.
+  //if the current time == the new time, dont update, else update
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.time === nextState.time) {
+      return false
+    }
+    return true
+  }
+
+
+  //componentDidMount initializes an interval.
+  //The interval within Timer is set based on the prop updateInterval
+  //setInterval function 
   componentDidMount() {
     this.interval = setInterval(
       this.clockTick,

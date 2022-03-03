@@ -6,15 +6,19 @@ import Controls from './Controls'
 //no need to modify anything in this component
 class App extends Component {
 
+  //creating the intial local state --> not using redux
   state = {
     updateInterval: 1,
     timerIDs: []
   }
 
+  //Upon the render, mount the timer 
+  //componentDidMount calls a method to add one initial timer
   componentDidMount() {
     this.handleAddTimer()
   }
 
+  //Passing in props to the Controls cointaner
   render() {
     console.log(this.state.timerIDs);
     return (
@@ -32,10 +36,12 @@ class App extends Component {
   }
 
   // returns array of components written in JSX, mapped from this.state.timerIDs
+  //function
   renderTimers = () => this.state.timerIDs.map(({id, updateInterval}) => <Timer key={id} id={id} removeTimer={this.removeTimer} updateInterval={updateInterval}/>)
 
 
   // adds a random number for timer ID
+  //function in ES6
   handleAddTimer = () => {
     this.setState(prevState => ({
       timerIDs: [
